@@ -12,7 +12,6 @@ Za analizo sem si izbrala najosnovnejše podatke o podjetjih v Sloveniji, kot so
 
 Vse zgoraj naštete podatke bom primerjala še z stopnjo rasti BDP v Sloveniji. Te podatke bom uvozila iz spletne strani Wikipedia.
 
-
 Povezave do podatkovnih virov:
 - SURS (https://pxweb.stat.si/pxweb/Database/Ekonomsko/Ekonomsko.asp#14) v obliki CSV
 - Wikipedia (https://en.wikipedia.org/wiki/Economy_of_Slovenia) v obliki HTML
