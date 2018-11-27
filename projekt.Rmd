@@ -17,7 +17,13 @@ runtime: shiny
 
 # Uvoz vseh potrebnih knjižnic
 source("lib/libraries.r", encoding="UTF-8")
+
+library(rgdal)
+library(maptools)
+if (!require(gpclib)) install.packages("gpclib", type="source")
+gpclibPermit()
 ```
+
 
 ```{r rstudio, echo=FALSE, results='asis'}
 # Izris povezave do RStudia na Binderju
@@ -26,7 +32,8 @@ source("lib/rstudio.r", encoding="UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Za analizo sem si izbrala najosnovnejše podatke o podjetjih v Sloveniji, kot so število podjetij,
+število zaposlenih, prihodki in dobički. Po regijah bom primerjala število podjetij, število oseb, ki delajo v regiji in skupne prihodke v letih med 1999 in 2016, po panogah pa število podjetij, število oseb, ki delajo v panogi, število zaposlenih, prihodke iz prodaje in dobiček.
 
 ![](slike/grb.png)
 

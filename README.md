@@ -1,4 +1,4 @@
-# Analiza podatkov s programom R, 2018/19
+# Osnovna analiza podjetij v Sloveniji
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
@@ -7,8 +7,24 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Za analizo sem si izbrala najosnovnejše podatke o podjetjih v Sloveniji, kot so število podjetij,
+število zaposlenih, prihodki in dobički. Po regijah bom primerjala število podjetij, število oseb, ki delajo v regiji in skupne prihodke v letih med 1999 in 2016, po panogah pa število podjetij in število oseb, ki delajo v panogi. Za primerjavo po panogah bom naredila dve tabeli, eno od leta 1999 do 2007 in drugo od 2008 do 2016, saj se v podatkih uporabljata dve različni standardni klasifikaciji dejavnosti (SKD). Podatke o prihodkih iz prodaje, dobičkih in številu zaposlenih bom vzela po panogah (klasifikacija dejavnosti v teh podatkih je spet malo drugačna) v letih od 2005 do 2017.
+
+Vse zgoraj naštete podatke bom primerjala še z stopnjo rasti BDP v Sloveniji. Te podatke bom uvozila iz spletne strani Wikipedia.
+
+
+Povezave do podatkovnih virov:
+- SURS (https://pxweb.stat.si/pxweb/Database/Ekonomsko/Ekonomsko.asp#14) v obliki CSV
+- Wikipedia (https://en.wikipedia.org/wiki/Economy_of_Slovenia) v obliki HTML
+
+Zasnova podatkovnega modela:
+
+Tabela 1: leto; regija; število podjetij; število oseb, ki delajo v regiji;
+Tabela 2: leto; regija; skupni prihodek podjetij v regiji;
+Tabela 3: leto (2008-2016); panoga (SKD 2008); število podjetij; število oseb, ki delajo v panogi;
+Tabela 4: leto (1999-2007); panoga (SKD 2002); število podjetij; število oseb, ki delajo v panogi;
+Tabela 5: leto; panoga; prihodek iz prodaje; dobiček; število zaposlenih;
+Tabela 6: leto; sprememba bdp;
 
 ## Program
 

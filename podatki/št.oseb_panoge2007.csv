@@ -1,0 +1,39 @@
+"Podjetja po dejavnosti [C-K] in velikosti po: SKD, MERITVE , LETO"
+
+" ";"Število oseb, ki delajo";" ";" ";" ";" ";" ";" ";" ";" "
+" ";"1999";"2000";"2001";"2002";"2003";"2004";"2005";"2006";"2007"
+"C RUDARSTVO";6784;5634;5334;4952;4725;4295;4051;3878;3659
+"D PREDELOVALNE DEJAVNOSTI";252572;251124;251401;253986;247778;244981;239392;235479;240628
+"E OSKRBA Z ELEKTRIÈNO ENERGIJO, PLINOM IN VODO";12275;12144;12000;12032;11804;11619;11652;11681;11573
+"F GRADBENIŠTVO";62834;66003;66474;65428;65511;65975;68052;72959;81319
+"G TRGOVINA, POPRAVILA MOTORNIH VOZIL IN IZDELKOV ŠIROKE PORABE";109126;111402;111264;108305;108123;110722;110170;111843;115326
+"H GOSTINSTVO";28440;29963;30106;29680;30462;30959;31514;32483;33732
+"I PROMET, SKLADIŠÈENJE IN ZVEZE";51451;52196;52587;53636;52853;52116;53541;55678;58773
+"J FINANÈNO POSREDNIŠTVO";19284;19836;20671;20724;20414;21089;21638;22532;22764
+"K POSLOVANJE Z NEPREMIÈNINAMI, NAJEM IN POSLOVNE STORITVE";54592;56100;59435;59490;62149;65055;69689;75445;81970
+
+"Viri: Statistièni urad Republike Slovenije.  "
+" "
+"Enota opazovanja "
+"Enota opazovanja je podjetje v dejavnosti C-K. "
+"Podjetje je registrirana pravna ali fizièna oseba, ki  je "
+"med letom opazovanja izkazala prihodek ali zaposlene osebe "
+"oziroma osebe, ki delajo. "
+" "
+" "
+"Uporabljena statistièna znamenja: "
+"-    ni pojava "
+"z   podatek zaradi zaupnosti ni objavljen "
+"...  ni podatka "
+
+"Standardna klasifikacija dejavnosti: (seznam "
+"HREF=../database/Meta/Klas/SKD_dejavnost.htm TARGET=_blank) opis in "
+"pojasnila . "
+"  "
+" "
+
+" "
+"Je število vseh zaposlenih in samozaposlenih oseb skupaj.  "
+"Podrobnejša definicija zaposlenih in samozaposlenih oseb  "
+"je v metodoloških pojasnilih."
+
