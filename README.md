@@ -24,7 +24,7 @@ Tabela 2: leto; regija; skupni prihodek podjetij v regiji;
 Tabela 3: leto (2008-2016); panoga (SKD 2008); število podjetij; število oseb, ki delajo v panogi;
 Tabela 4: leto (1999-2007); panoga (SKD 2002); število podjetij; število oseb, ki delajo v panogi;
 Tabela 5: leto; panoga; prihodek iz prodaje; dobiček; število zaposlenih;
-Tabela 6: leto; sprememba bdp;
+Tabela 6: leto; sprememba BDP;
 
 ## Program
 
