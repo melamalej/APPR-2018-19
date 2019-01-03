@@ -41,14 +41,14 @@ tabela4$Regija <- factor(tabela4$Regija)
 
 tabela5 <- read_csv2("prihodek_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
                      locale = locale(encoding = "Windows-1250"))
-tabela5 <- tabela5 %>% melt(tabela5, value.name = "Skupni prihodek", id.vars = "Regija", measure.vars = names(tabela5)[-1],
+tabela5 <- tabela5 %>% melt(tabela5, value.name = "Skupni prihodek (1000 EUR)", id.vars = "Regija", measure.vars = names(tabela5)[-1],
                             variable.name = "Leto")
 tabela5$Leto <- parse_number(tabela5$Leto)
 tabela5$Regija <- factor(tabela5$Regija)
 
 tabela6 <- read_csv2("prihodek_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
                      locale = locale(encoding = "Windows-1250"))
-tabela6 <- tabela6 %>% melt(tabela6, value.name = "Skupni prihodek", id.vars = "Regija", measure.vars = names(tabela6)[-1],
+tabela6 <- tabela6 %>% melt(tabela6, value.name = "Skupni prihodek (1000 EUR)", id.vars = "Regija", measure.vars = names(tabela6)[-1],
                             variable.name = "Leto")
 tabela6$Regija[tabela6$Regija == "Spodnjeposavska"] <- "Posavska"
 tabela6$Regija[tabela6$Regija == "Notranjsko-kraška"] <- "Primorsko-notranjska"
@@ -97,7 +97,7 @@ colnames(panoge3) <- c("Panoga", "Leto", "Število oseb")
 Panoge2008 <- bind_cols(panoge1, panoge3[3])
 
 #tabela3
-p2 <- read_csv2("št.pod_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 2008:2016),
+p2 <- read_csv2("št.pod_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
                 locale = locale(encoding = "Windows-1250"))
 panoge2 <- p2 %>% melt(p2, value.name = "Število podjetij", id.vars = "Panoga", measure.vars = names(p2)[-1],
                             variable.name = "Leto")
@@ -112,7 +112,7 @@ panoge2$Panoga[panoge2$Panoga == "I PROMET, SKLADIŠČENJE IN ZVEZE"] <- "Promet
 panoge2$Panoga[panoge2$Panoga == "J FINANČNO POSREDNIŠTVO"] <- "Finančno posredništvo"
 panoge2$Panoga[panoge2$Panoga == "K POSLOVANJE Z NEPREMIČNINAMI, NAJEM IN POSLOVNE STORITVE"] <- "Poslovanje z nepremičninami, najem in poslovne storitve"
 
-p4 <- read_csv2("št.oseb_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 2008:2016),
+p4 <- read_csv2("št.oseb_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
                 locale = locale(encoding = "Windows-1250"))
 panoge4 <- p4 %>% melt(p4, value.name = "Število oseb", id.vars = "Panoga", measure.vars = names(p4)[-1],
                        variable.name = "Leto")

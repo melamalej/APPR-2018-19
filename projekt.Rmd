@@ -45,26 +45,47 @@ Za analizo sem si izbrala najosnovnejše podatke o podjetjih v Sloveniji, kot so
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Uvozila sem podatke v obliki CSV s statističnega urada ter v obliki HTML
+z Wikipedije. Podatki so v petih razpredelnicah v obliki *tidy data*.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+1. `Regije` - podatki o številu podjetij, številu oseb, ki delajo in prihodku za vsako regijo
+  - `regija` - spremenljivka: ime regije  (faktor),
+  - `leto` - spremenljivka: leto  (število),
+  - `število podjetij` - meritev: število podjetij v regiji (število),
+  - `število oseb` - meritev: število oseb, ki delajo v regiji - število vseh zaposlenih in     samozaposlenih oseb skupaj (število),
+  - `Skupni prihodek (1000 EUR)` - meritev: skupni prihodek podjetij v regiji v 1000 EUR (število);
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+2. `Panoge2008` - podatki o številu podjetij in številu oseb, ki delajo za vsako panogo od leta 2008 do 2016
+  - `panoga` - spremenljivka: ime panoge  (faktor),
+  - `leto` - spremenljivka: leto  (število),
+  - `število podjetij` - meritev: število podjetij v regiji (število),
+  - `število oseb` - meritev: število oseb, ki delajo v regiji - število vseh zaposlenih in     samozaposlenih oseb skupaj (število);
+  
+3. `Panoge2007` -podatki o številu podjetij in številu oseb, ki delajo za vsako panogo od leta 1999 do 2007
+  - `panoga` - spremenljivka: ime panoge  (faktor),
+  - `leto` - spremenljivka: leto  (število),
+  - `število podjetij` - meritev: število podjetij v regiji (število),
+  - `število oseb` - meritev: število oseb, ki delajo v regiji - število vseh zaposlenih in samozaposlenih oseb skupaj (število);
+  
+4. `Panoge` - podatki o podjethih za vsako panogo 
+  - `panoga` - spremenljivka: ime panoge  (faktor),
+  - `leto` - spremenljivka: leto  (število),
+  - `Prihodki od prodaje (1000 EUR)` - meritev: prihodki od prodaje so prodajne vrednosti kupcem zaračunanih prodanih proizvodov ali trgovskega blaga in materiala ter opravljenih storitev (število),
+  - `Bruto poslovni presežek (1000 EUR)` - meritev: Bruto poslovni presežek je presežek, ki nastane iz poslovnih dejavnosti po poplačilu vhodnih faktorjev dela (število),
+  - `Število zaposlenih` - meritev: Zaposlene osebe so osebe, ki delajo pri delodajalcu (število);
+  
+5. `bdp` - podatki o bdp-ju Slovenije
+  - `leto` - spremenljivka: leto  (število),
+  - `BDP` - meritev: bruto domači proizvod Slovenije (število);
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
+```{r razpredelnice}
+kable(head(Regije))
+kable(head(Panoge2008))
+kable(head(Panoge2007))
+kable(head(Panoge))
+kable(head(bdp))
+```  
+
 
 Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 
