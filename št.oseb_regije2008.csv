@@ -1,0 +1,96 @@
+"Podjetja po: KOHEZIJSKA in STATISTIÈNA REGIJA, MERITVE , LETO"
+
+" ";"Število oseb, ki delajo";" ";" ";" ";" ";" ";" ";" ";" "
+" ";"2008";"2009";"2010";"2011";"2012";"2013";"2014";"2015";"2016"
+"Pomurska";36572;35194;32803;32822;32143;31599;31322;31265;31661
+"Podravska";123632;120008;117443;115399;112880;114826;115612;117781;118803
+"Koroška";25597;24132;22846;22194;22237;21900;22099;22313;22600
+"Savinjska";104819;101565;98326;95407;94776;93723;94412;94206;96134
+"Zasavska";12919;12183;11846;11525;11352;10913;10594;13798;14063
+"Posavska";21030;20991;19760;19021;19168;19303;19217;20748;21324
+"Jugovzhodna Slovenija";50213;48832;47687;46407;45038;44503;44911;45818;47290
+"Primorsko-notranjska";16738;16665;16071;15067;14844;14672;14906;15323;15783
+"Osrednjeslovenska";326972;325580;319003;311818;313204;318371;324016;323292;332311
+"Gorenjska";71699;69710;69847;68170;68012;66355;68626;68955;71417
+"Goriška";47185;45340;43931;42561;41992;41079;41262;42212;43175
+"Obalno-kraška";44222;44147;42596;41977;41096;40214;40423;41743;43642
+
+"Vir: Statistièni urad Republike Slovenije. "
+" "
+"Enota opazovanja "
+"Enota opazovanja je podjetje, registrirano kot pravna ali fizièna "
+"oseba, ki  je med letom "
+"opazovanja izkazala prihodek ali zaposlene osebe oziroma osebe, ki "
+"delajo. Za "
+"enote po Standardni klasifikaciji institucionalnih sektorjev države "
+"in neprofitnih "
+" institucij, ki opravljajo storitve za gospodinjstva, upoštevajo tudi "
+"izkazani prihodki "
+"èlanarin, subvencij in drugih poslovnih prihodkov. Le-ti pa niso "
+"zajeti v prihodek. "
+" "
+"Èasovne vrste podatkov po SKD 2002 so objavljeni v tabeli (seznam "
+"HREF=../Database/SKD2002_slo/14_poslovni_subjekti/01_14188_podjetja/0-"
+"1_14188_podjetja.asp TARGET=_blank) Število podjetij ."
+
+"Povezane vsebine: "
+"- (seznam HREF= "
+"http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatoteke=8276"
+"target=_blank) Metodološka pojasnila"
+
+"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
+"teritorialnih enot v Evropski uniji (The Classification  of "
+"Territorial Units for Statistics) – NUTS ((seznam "
+"HREF=../database/Meta/Klas/NUTS.htm TARGET=_blank) opis in "
+"pojasnila), raven NUTS 3. "
+"Opombe o spremembah posameznih regij so zapisane k vsaki spremenjeni "
+"regiji in so ob izpisu tabele na zaslon dostopne s klikom na ikono za "
+"opombe (zvezdica). V opombah je na zaèetku naveden datum, s katerim "
+"je opisana teritorialna sprememba upoštevana pri teritorialnem "
+"razvršèanju enot za statistiène namene. "
+" "
+"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
+"teritorialnih enot v Evropski uniji (The Classification  of "
+"Territorial Units for Statistics) – NUTS ((seznam "
+"HREF=../database/Meta/Klas/NUTS.htm TARGET=_blank) opis in "
+"pojasnila), raven NUTS 2. "
+" "
+
+"Na podlagi spremembe Uredbe NUTS se je Spodnjeposavska NUTS 3 regija "
+"(statistièna regija) preimenovala v Posavsko NUTS 3 regijo "
+"(statistièno regijo) v 2015."
+
+"30. 3. 2000 je bil po Uredbi o SKTE iz dotedanje osrednjeslovenske "
+"statistiène regije izloèen njen južni del (obèine Koèevje, Kostel, "
+"Loški Potok, Osilnica, Ribnica, Sodražica) in pripojen k dotedanji "
+"dolenjski statistièni regiji; ta se je zato poveèala (za  985 km2 ) "
+"in je dobila novo ime – jugovzhodna Slovenija "
+" Uradni list št. 28/00. "
+
+"Na podlagi spremembe Uredbe NUTS se je Notranjsko-kraška NUTS 3 "
+"regija (statistièna regija) preimenovala v Primorsko-notranjsko NUTS "
+"3 regijo (statistièno regijo) v 2015."
+
+"30. 3. 2000 je bil po Uredbi o SKTE iz dotedanje osrednjeslovenske "
+"statistiène regije izloèen njen južni del (obèine Koèevje, Kostel, "
+"Loški Potok, Osilnica, Ribnica, Sodražica) in pripojen k dotedanji "
+"dolenjski statistièni regiji; ta se je zato poveèala (za  985 km2 ) "
+"in je dobila novo ime – jugovzhodna Slovenija "
+" Uradni list št. 28/00. "
+
+"So vse osebe, ki delajo pri opazovani enoti (plaèane in neplaèane), "
+"in tudi vse "
+"tiste osebe, ki delajo zunaj enote, ki ji pripadajo in ki jih plaèuje "
+"(npr. "
+"prodajni zastopniki). Med osebe, ki delajo, se štejejo tudi delavci s "
+"krajšim "
+"delovnim èasom, sezonski delavci in delavci na domu, ki so na "
+"plaèilnem seznamu "
+"opazovane enote. Od leta 2013 so med osebe, ki delajo, vkljuèeni tudi "
+"detaširani delavci  "
+"v delovnem razmerju pri delodajalcu s sedežem v RS, poslani na delo "
+"ali na strokovno  "
+"izpopolnjevanje v tujino. Med osebe, ki delajo, pa se ne štejejo "
+"delavci, ki jih enoti  "
+"posredujejo druga podjetja, in prostovoljni delavci."
+

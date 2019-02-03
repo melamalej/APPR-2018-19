@@ -18,16 +18,12 @@ runtime: shiny
 # Uvoz vseh potrebnih knjižnic
 source("lib/libraries.r", encoding="UTF-8")
 
-library(rgdal)
-library(maptools)
-if (!require(gpclib)) install.packages("gpclib", type="source")
-gpclibPermit()
 ```
 
 
 ```{r rstudio, echo=FALSE, results='asis'}
 # Izris povezave do RStudia na Binderju
-source("lib/rstudio.r", encoding="UTF-8")
+#source("lib/rstudio.r", encoding="UTF-8")
 ```
 
 # Izbira teme
@@ -41,7 +37,7 @@ Za analizo sem si izbrala najosnovnejše podatke o podjetjih v Sloveniji, kot so
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE, message=FALSE}
+```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
@@ -86,12 +82,12 @@ kable(head(Panoge))
 kable(head(bdp))
 ```  
 
-
 Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 
 ```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x=naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
+ggplot(podatki_po_letih, aes(x=Leto, y=Skupno_število_podjetij/1e6))+ 
+  geom_line(aes(size=Skupno_število_oseb,color="red")) + xlab("Leto") + ylab("Število") 
+
 ```
 
 ***

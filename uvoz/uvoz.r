@@ -3,20 +3,21 @@
 require(dplyr)
 require(tidyr)
 require(readr)
+require(tibble)
 
 library(reshape2)
 
 #Regije (tabela1)
-tabela1 <- read_csv2("št.podjetij_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
+tabela1 <- read_csv2("št.podjetij_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija",2008:2016),
                      locale = locale(encoding = "Windows-1250"))
-tabela1 <- tabela1 %>% melt(tabela1, value.name = "Število podjetij", id.vars = "Regija", measure.vars = names(tabela1)[-1],
+tabela1 <- tabela1 %>% melt(tabela1, value.name = "Število_podjetij", id.vars = "Regija", measure.vars = names(tabela1)[-1],
                             variable.name = "Leto")
 tabela1$Leto <- parse_number(tabela1$Leto)
 tabela1$Regija <- factor(tabela1$Regija)
 
 tabela2 <- read_csv2("št.podjetij_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
                      locale = locale(encoding = "Windows-1250"))
-tabela2 <- tabela2 %>% melt(tabela2, value.name = "Število podjetij", id.vars = "Regija", measure.vars = names(tabela2)[-1],
+tabela2 <- tabela2 %>% melt(tabela2, value.name = "Število_podjetij", id.vars = "Regija", measure.vars = names(tabela2)[-1],
                             variable.name = "Leto")
 tabela2$Regija[tabela2$Regija == "Spodnjeposavska"] <- "Posavska"
 tabela2$Regija[tabela2$Regija == "Notranjsko-kraška"] <- "Primorsko-notranjska"
@@ -25,14 +26,14 @@ tabela2$Regija <- factor(tabela2$Regija)
 
 tabela3 <- read_csv2("št.oseb_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
                      locale = locale(encoding = "Windows-1250"))
-tabela3 <- tabela3 %>% melt(tabela3, value.name = "Število oseb", id.vars = "Regija", measure.vars = names(tabela3)[-1],
+tabela3 <- tabela3 %>% melt(tabela3, value.name = "Število_oseb", id.vars = "Regija", measure.vars = names(tabela3)[-1],
                             variable.name = "Leto")
 tabela3$Leto <- parse_number(tabela3$Leto)
 tabela3$Regija <- factor(tabela3$Regija)
 
 tabela4 <- read_csv2("št.oseb_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
                      locale = locale(encoding = "Windows-1250"))
-tabela4 <- tabela4 %>% melt(tabela4, value.name = "Število oseb", id.vars = "Regija", measure.vars = names(tabela4)[-1],
+tabela4 <- tabela4 %>% melt(tabela4, value.name = "Število_oseb", id.vars = "Regija", measure.vars = names(tabela4)[-1],
                             variable.name = "Leto")
 tabela4$Regija[tabela4$Regija == "Spodnjeposavska"] <- "Posavska"
 tabela4$Regija[tabela4$Regija == "Notranjsko-kraška"] <- "Primorsko-notranjska"
@@ -41,14 +42,14 @@ tabela4$Regija <- factor(tabela4$Regija)
 
 tabela5 <- read_csv2("prihodek_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
                      locale = locale(encoding = "Windows-1250"))
-tabela5 <- tabela5 %>% melt(tabela5, value.name = "Skupni prihodek (1000 EUR)", id.vars = "Regija", measure.vars = names(tabela5)[-1],
+tabela5 <- tabela5 %>% melt(tabela5, value.name = "Skupni_prihodek", id.vars = "Regija", measure.vars = names(tabela5)[-1],
                             variable.name = "Leto")
 tabela5$Leto <- parse_number(tabela5$Leto)
 tabela5$Regija <- factor(tabela5$Regija)
 
 tabela6 <- read_csv2("prihodek_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
                      locale = locale(encoding = "Windows-1250"))
-tabela6 <- tabela6 %>% melt(tabela6, value.name = "Skupni prihodek (1000 EUR)", id.vars = "Regija", measure.vars = names(tabela6)[-1],
+tabela6 <- tabela6 %>% melt(tabela6, value.name = "Skupni_prihodek", id.vars = "Regija", measure.vars = names(tabela6)[-1],
                             variable.name = "Leto")
 tabela6$Regija[tabela6$Regija == "Spodnjeposavska"] <- "Posavska"
 tabela6$Regija[tabela6$Regija == "Notranjsko-kraška"] <- "Primorsko-notranjska"

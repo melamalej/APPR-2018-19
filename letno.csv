@@ -1,0 +1,76 @@
+"Poslovanje podjetij po: SKD DEJAVNOST, MERITVE , LETO"
+
+" ";"12110 Prihodki od prodaje (1000 EUR)";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";"12170 Bruto poslovni presežek (1000 EUR)";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";"16130 Število zaposlenih";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" "
+" ";"2005";"2006";"2007";"2008";"2009";"2010";"2011";"2012";"2013";"2014";"2015";"2016";"2017";"2005";"2006";"2007";"2008";"2009";"2010";"2011";"2012";"2013";"2014";"2015";"2016";"2017";"2005";"2006";"2007";"2008";"2009";"2010";"2011";"2012";"2013";"2014";"2015";"2016";"2017"
+"B RUDARSTVO";227427;262092;291176;307862;284309;293514;267682;255889;272121;273679;274767;282139;308591;16048;23825;30274;25791;26654;45761;41254;26548;24523;25754;32753;38612;46371;3906;3761;3600;3430;3207;2934;2395;2435;2359;2370;2380;2334;2370
+"C PREDELOVALNE DEJAVNOSTI";20067183;22473555;25129757;25829148;20799818;22931877;24424297;23897662;23847800;24682160;25525827;26387788;29353328;1913623;2350004;2673207;2423546;1460398;2254492;2317636;2123717;2256803;2708469;2814050;3028196;3430565;217012;219084;223351;221482;197910;187643;183629;180722;177671;177302;180271;185341;192907
+"D OSKRBA Z ELEKTRIÈNO ENERGIJO, PLINOM IN PARO";1788895;2136183;2353471;3580044;3627353;4034295;5293389;6591860;5949925;5535527;6075639;5583308;7305104;301161;307207;374051;438978;411846;445106;487505;486938;515195;503844;448698;508503;490170;7475;7479;7542;7554;7704;7770;7831;7781;7759;7850;7783;7703;7665
+"E OSKRBA Z VODO, RAVNANJE Z ODPLAKAMI IN ODPADKI, SANIRANJE OKOLJA";574303;674798;789561;882568;763945;1032382;1146389;1148907;1151457;1189095;1119950;1107859;1322498;86015;95887;110637;107951;84923;106512;92542;78070;84199;93078;84417;75972;85609;8009;8285;8682;8996;9194;9303;9547;9532;9687;9811;9741;9429;9528
+"F GRADBENIŠTVO";4895018;5615657;7522941;8439969;6831334;6023567;5191052;4827439;4430335;4787592;4593916;4304456;4849293;319060;460955;767609;851685;534154;286405;314443;359544;335988;472670;397638;332879;474390;56389;60573;68005;76566;73636;65044;56325;50165;49002;48882;50141;49154;50760
+"G TRGOVINA, VZDRŽEVANJE IN POPRAVILA MOTORNIH VOZIL";21526987;24118506;27383683;31608850;26634726;27332912;28714175;28842698;28495823;29390060;29902305;31073418;33852620;1223240;1265536;1819493;1804293;913553;1237350;1508875;1129400;1165500;1214372;1480533;1619684;1874202;96102;101034;104665;108074;107763;105164;102650;101047;98413;98314;98616;100114;103057
+"H PROMET IN SKLADIŠÈENJE";3093555;3641909;4162291;4734420;4067552;4490937;4646319;4632332;4725903;4806485;5004655;5281940;5827972;357318;438217;428241;560434;399062;784676;804444;816931;843416;863785;937444;1008041;1113780;39044;42182;44899;47466;46355;44734;38641;38510;37720;38185;39838;41485;44351
+"I GOSTINSTVO";1136005;1309327;1496466;1608792;1466450;1464126;1525655;1509592;1532938;1581298;1642565;1794815;1943355;115518;115214;185164;195676;142989;131912;152193;157302;157513;176468;200453;238127;267507;25581;27439;28618;28665;29119;28338;27683;27194;26421;26854;27880;28851;30281
+"J INFORMACIJSKE IN KOMUNIKACIJSKE DEJAVNOSTI";2376777;2650763;2991048;3131449;2954306;2987720;2930932;2889313;2971608;2953771;3093749;3207369;3392063;455357;498294;574889;542021;426848;503966;521839;525635;509751;526315;538906;562581;643918;17747;18992;20156;18948;19279;19039;18864;19276;19476;19204;19541;19689;20182
+"L POSLOVANJE Z NEPREMIÈNINAMI";407159;478318;644461;768622;639008;673507;601038;659219;550449;600935;589472;651084;682796;101043;101265;173602;242878;196813;184690;134986;128875;171916;196052;189344;199727;214061;2888;3300;3601;4043;4113;4084;3820;3864;3650;3721;3595;3610;3779
+"M STROKOVNE, ZNANSTVENE IN TEHNIÈNE DEJAVNOSTI";2702002;3084092;3663423;3975375;3644079;3959343;3990742;3902891;4007580;4238874;4285169;4217321;5069432;320950;358252;521611;631687;478336;444689;439837;458543;538048;663042;697658;744164;886894;28279;30158;32568;33198;34275;35188;36358;36586;37340;35801;35442;35406;36603
+"N DRUGE RAZNOVRSTNE POSLOVNE DEJAVNOSTI";837355;906792;1089912;1229855;1136410;1177431;1220788;1206215;1196701;1352452;1439938;1572075;1825305;48355;50754;84321;67863;60131;88305;66590;81452;84603;103143;119946;142235;192568;19733;21848;23151;24613;23797;24754;25162;23699;23355;28118;30110;32417;35746
+
+"Vir: Statistièni urad Republike Slovenije. "
+" "
+"Konèni podatki strukturne statistike podjetij za referenèno leto 2017 "
+"bodo objavljeni predvidoma maja 2019. "
+" "
+"Podatki za obdobje 2005-2007 so preraèunani za nazaj po novi "
+"klasifikaciji dejavnosti in so zato manj kakovostni.  Preraèune "
+"èasovnih vrst smo izvedli na mikroravni, kar pomeni, da smo za vsak "
+"individualni zapis v mikro bazi in za vsako èasovno obdobje, "
+"klasifikacijo SKD 2002 nadomestili s klasifikacijo SKD 2008 in nato "
+"ponovno izraèunali vse statistike in agregate. "
+
+"Povezane vsebine: "
+" - (seznam HREF=http://www.stat.si/statweb/File/DocSysFile/8275 "
+"target=_blank) Metodološka pojasnila"
+
+"Prihodki od prodaje so prodajne vrednosti kupcem zaraèunanih prodanih "
+"proizvodov ali trgovskega blaga in materiala ter opravljenih "
+"storitev. Merijo se na podlagi prodajnih cen, navedenih v raèunih in "
+"drugih listinah, zmanjšanih za vse popuste, ki so bili dani ob "
+"prodaji ali pozneje, pa tudi za vrednosti vrnjenih kolièin. Prihodki "
+"zajemajo tudi vse stroške in obremenitve, vezane na kupca, ne "
+"zajemajo pa davka na dodano vrednost (DDV), morebitne prodaje "
+"osnovnih sredstev, prihodkov od financiranja in drugih izrednih "
+"prihodkov."
+
+"Bruto poslovni presežek je presežek, ki nastane iz poslovnih "
+"dejavnosti po poplaèilu vhodnih faktorjev dela. Izraèuna se lahko iz "
+"dodane vrednosti v stroških faktorjev, in sicer tako, da se od te "
+"vrednosti odštejejo  stroški dela. To je znesek, ki je na voljo enoti "
+"in ki ji dovoljuje poplaèilo dobaviteljem iz lastnih sredstev in "
+"dolga, plaèilo davkov in morebitno financiranje celotnih ali dela "
+"njihovih investicij. Prihodek in/ali odhodek, ki sta v raèunovodskih "
+"izkazih družbe kategorizirana kot finanèna ali izredna, se ne "
+"upoštevata v bruto poslovnem presežku."
+
+"Zaposlene osebe so osebe, ki delajo pri delodajalcu (pri pravnih "
+"osebah, samostojnih podjetnikih ali drugih registriranih fiziènih "
+"osebah) in prejemajo plaèo ter so na podlagi pogodbe o zaposlitvi "
+"obvezno socialno zavarovane. Pogodba o zaposlitvi je lahko sklenjena "
+"za nedoloèen ali doloèen èas, ne glede na to, ali gre za zaposlitev s "
+"polnim delovnim èasom ali z delovnim èasom, krajšim od polnega. Med "
+"zaposlene osebe se štejejo tudi pripravniki in osebe, udeležene pri "
+"javnih delih, ter družbeniki zasebnih družb in zavodov v RS, ki so "
+"poslovodne osebe (èe niso obvezno zavarovani na drugi podlagi). Med "
+"zaposlene osebe se ne štejejo študenti in dijaki, ki obèasno delajo "
+"za delodajalca in prejemajo plaèilo. Izkljuèene so tudi osebe, ki  so "
+"prejemniki starševskega nadomestila (osebe na porodniškem dopustu) in "
+"osebe, ki so na dolgotrajni bolniški odsotnosti. Med zaposlene osebe "
+"so vkljuèeni detaširani delavci v delovnem razmerju pri delodajalcu s "
+"sedežem v RS, poslani na delo ali na strokovno izpopolnjevanje v "
+"tujino."
+
+"M manj natanèna ocena - previdna uporaba"
+
+"M manj natanèna ocena - previdna uporaba"
+
+"M manj natanèna ocena - previdna uporaba"
+
