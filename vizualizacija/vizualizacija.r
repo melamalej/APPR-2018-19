@@ -25,22 +25,39 @@ podatki_po_letih <- cbind(podatki_po_letih1, podatki_po_letih2[2], podatki_po_le
 
 
 graf <- ggplot(podatki_po_letih, aes(x=Leto, y=Skupno_število_podjetij/1e6))+ 
-  geom_line(aes(size=Skupno_število_oseb,color="red")) + xlab("Leto") + ylab("Število") 
+  geom_line(aes(size=Skupno_število_oseb)) + xlab("Leto") + ylab("Število") 
 print(graf)
   
 
 # Uvozimo zemljevid.
-uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36_SVN_shp.zip", "gadm36_SVN_0",
-                pot.zemljevida="gadm36_SVN_0")
-#zemljevid <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/gpkg/gadm36_SVN_gpkg.zip", "REGIJE",
-                             encoding="Windows-1250")
-ggplot() + geom_polygon(data=zemljevid, aes(x=long, y=lat, group=group, fill=id)) +
-  guides(fill=FALSE)
-levels(zemljevid$OB_UIME) <- levels(zemljevid$OB_UIME) %>%
-  { gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
-zemljevid$OB_UIME <- factor(zemljevid$OB_UIME, levels=levels(obcine$obcina))
-zemljevid <- fortify(zemljevid)
 
-# Izračunamo povprečno velikost družine
-povprecja <- druzine %>% group_by(obcina) %>%
-  summarise(povprecje=sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
+zemljevid <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36_SVN_shp.zip",
+                          "gadm36_SVN_1") %>% fortify()
+
+#Primerjava imen regij:
+#zr <- zemljevid$NAME_1 %>% unique()
+#rr <- Regije$Regija %>% unique()
+
+Regije$Regija[Regije$Regija=="Posavska"] <- "Spodnjeposavska"
+Regije$Regija[Regije$Regija=="Primorsko-notranjska"] <- "Notranjsko-kraška"
+Regije$Regija <- factor(Regije$Regija)
+
+# Zemljevid Slovenije pobarvan glede na število podjetij v regiji leta 2016
+
+st_podjetij_2016 <- Regije %>% select(Regija, Leto, Število_podjetij) %>% filter(Leto==2016)
+
+zemljevid1 <- ggplot(inner_join(zemljevid, st_podjetij_2016, by = c("NAME_1"='Regija'))) + 
+  geom_polygon(aes(x = long, y = lat, group = group, fill = Število_podjetij)) +
+  scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
+                
+print(zemljevid1)
+
+# Zemljevid Slovenije pobarvan glede na prihodek v regiji leta 2016
+
+prihodek_2016 <- Regije %>% select(Regija, Leto, Skupni_prihodek) %>% filter(Leto==2016)
+
+zemljevid2 <- ggplot(inner_join(zemljevid, prihodek_2016, by = c("NAME_1"='Regija'))) + 
+  geom_polygon(aes(x = long, y = lat, group = group, fill = Skupni_prihodek/1e6)) +
+  scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
+print(zemljevid2)
+
