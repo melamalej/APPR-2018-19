@@ -188,6 +188,4 @@ zemljevid2 <- ggplot(inner_join(zemljevid, prihodek_2016, by = c("NAME_1"='Regij
   geom_polygon(aes(x = long, y = lat, group = group, fill = Skupni_prihodek)) +
   scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
 
-#runApp("shiny")
-#shinyAppDir("shiny", options=list(width="100%", height=1350))
 
