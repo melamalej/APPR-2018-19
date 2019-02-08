@@ -80,21 +80,21 @@ p1 <- read_csv2("št.pod_panoge2008.csv", skip = 4, n_max = 2, col_names = Panog
 panoge1 <- as.data.frame(t(p1), row.names = NULL)
 panoge1 <- remove_rownames(panoge1)
 panoge1 <- cbind(Panoge, panoge1)
-colnames(panoge1) <- c("Panoga", "Leto", "Število podjetij")
+colnames(panoge1) <- c("Panoga", "Leto", "Število_podjetij")
 
 p3 <- read_csv2("št.oseb_panoge2008.csv", skip = 4, n_max = 2, col_names = Panoge)
 panoge3 <- as.data.frame(t(p3), row.names = NULL)
 panoge3 <- remove_rownames(panoge3)
 panoge3 <- cbind(Panoge, panoge3)
 panoge3[panoge3=="z"]<-NA
-colnames(panoge3) <- c("Panoga", "Leto", "Število oseb")
+colnames(panoge3) <- c("Panoga", "Leto", "Število_oseb")
 
 Panoge2008 <- bind_cols(panoge1, panoge3[3])
 
 #tabela3
 p2 <- read_csv2("št.pod_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
                 locale = locale(encoding = "Windows-1250"))
-panoge2 <- p2 %>% melt(p2, value.name = "Število podjetij", id.vars = "Panoga", measure.vars = names(p2)[-1],
+panoge2 <- p2 %>% melt(p2, value.name = "Število_podjetij", id.vars = "Panoga", measure.vars = names(p2)[-1],
                             variable.name = "Leto")
 panoge2$Leto <- parse_number(panoge2$Leto)
 panoge2$Panoga[panoge2$Panoga == "C RUDARSTVO"] <- "Rudarstvo"
@@ -109,7 +109,7 @@ panoge2$Panoga[panoge2$Panoga == "K POSLOVANJE Z NEPREMIČNINAMI, NAJEM IN POSLO
 
 p4 <- read_csv2("št.oseb_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
                 locale = locale(encoding = "Windows-1250"))
-panoge4 <- p4 %>% melt(p4, value.name = "Število oseb", id.vars = "Panoga", measure.vars = names(p4)[-1],
+panoge4 <- p4 %>% melt(p4, value.name = "Število_oseb", id.vars = "Panoga", measure.vars = names(p4)[-1],
                        variable.name = "Leto")
 panoge4$Leto <- parse_number(panoge4$Leto)
 panoge4$Panoga[panoge4$Panoga == "C RUDARSTVO"] <- "Rudarstvo"
@@ -146,8 +146,8 @@ zaposleni <- data.frame(Zaposleni=unlist(zaposleni, use.names = FALSE))
 
 Panoge <- cbind(Panoge2,Leta2, prihodki, presežek, zaposleni)
 Panoge <- as.data.frame(Panoge)
-colnames(Panoge) <- c("Panoga", "Leto", "Prihodki od prodaje (1000 EUR)",
-                       "Bruto poslovni presežek (1000 EUR)", "Število zaposlenih")
+colnames(Panoge) <- c("Panoga", "Leto", "Prihodki_od_prodaje_(1000_EUR)",
+                       "Bruto_poslovni_presežek_(1000_EUR)", "Število_zaposlenih")
 
 #tabela5
 link <- "https://en.wikipedia.org/wiki/Economy_of_Slovenia"
@@ -156,8 +156,8 @@ bdp <- stran %>% html_nodes(xpath="//table[@class='wikitable']") %>%.[[1]]%>% ht
 bdp <- data.frame(Leto = 2005:2017, BDP = t(bdp[3, 5:17]), row.names = NULL)
 bdp$X3 <- gsub("\\%", "", bdp$X3)
 bdp$X3 <- parse_number(bdp$X3)
-names(bdp) <- c("Leto", "Sprememba BDP")
-bdp$`Sprememba BDP`[5] <- -7.8
-bdp$`Sprememba BDP`[8] <- -2.7
-bdp$`Sprememba BDP`[9] <- -1.1
-
+names(bdp) <- c("Leto", "Sprememba_BDP")
+bdp$`Sprememba_BDP`[5] <- -7.8
+bdp$`Sprememba_BDP`[8] <- -2.7
+bdp$`Sprememba_BDP`[9] <- -1.1
+bdp$Leto <- parse_number(bdp$Leto)
