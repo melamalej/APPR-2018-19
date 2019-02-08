@@ -125,6 +125,16 @@ panoge4$Panoga[panoge4$Panoga == "K POSLOVANJE Z NEPREMIČNINAMI, NAJEM IN POSLO
 Panoge2007 <- bind_cols(panoge2, panoge4[3]) 
 
 #tabela4
+panoge <- c("Rudarstvo","Predelovalne dejavnosti", 
+            "Oskrba z električno energijo, plinom in paro",
+            "Oskrba z vodo, ravnanje z odplakami in odpadki, saniranje okolja",
+            "Gradbeništvo","Trgovina,vzdrževanje in popravila motornih vozil",
+            "Promet in skladiščenje", "Gostinostvo",
+            "Informacijske in komunikacijske dejavnosti",
+            "Poslovanje z nepremičninami", 
+            "Strokovne, znanstvene in tehnične dejavnosti", 
+            "Druge raznovrstne poslovne dejavnosti")
+
 Panoge2 <- c(rep(c("Rudarstvo","Predelovalne dejavnosti", 
                  "Oskrba z električno energijo, plinom in paro",
                  "Oskrba z vodo, ravnanje z odplakami in odpadki, saniranje okolja",
@@ -146,8 +156,8 @@ zaposleni <- data.frame(Zaposleni=unlist(zaposleni, use.names = FALSE))
 
 Panoge <- cbind(Panoge2,Leta2, prihodki, presežek, zaposleni)
 Panoge <- as.data.frame(Panoge)
-colnames(Panoge) <- c("Panoga", "Leto", "Prihodki_od_prodaje_(1000_EUR)",
-                       "Bruto_poslovni_presežek_(1000_EUR)", "Število_zaposlenih")
+colnames(Panoge) <- c("Panoga", "Leto", "Prihodki_od_prodaje_v_tisoč_EUR",
+                       "Bruto_poslovni_presežek_v_tisoč_EUR", "Število_zaposlenih")
 
 #tabela5
 link <- "https://en.wikipedia.org/wiki/Economy_of_Slovenia"
