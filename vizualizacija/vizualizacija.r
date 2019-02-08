@@ -25,12 +25,10 @@ podatki_po_letih <- cbind(podatki_po_letih1, podatki_po_letih2[2], podatki_po_le
 graf1 <- ggplot() + 
   geom_line(data=podatki_po_letih, aes(x=Leto, y=Skupno_število_podjetij)) +
   ggtitle("Število podjetij v Sloveniji") + labs(x="Leto", y="Število podjetij")
-print(graf1)
  
 graf2 <- ggplot() + 
-  geom_line(data=podatki_po_letih, aes(x=Leto, y=Skupno_število_oseb), colour="orange") +
+  geom_line(data=podatki_po_letih, aes(x=Leto, y=Skupno_število_oseb)) +
   ggtitle("Število oseb, ki delajo v Sloveniji") + labs(x="Leto", y="Število oseb, ki delajo")
-print(graf2)
 
 #Graf spremembe prihodka in bdp
 
@@ -51,7 +49,6 @@ graf3 <- ggplot(Sprememba, aes(Leto, y=value, col=variable)) +
   geom_line() + 
   ggtitle("Primerjava spremembe skupnega prihodka s spremembo bdp") + 
   labs(x="Leto", y="Sprememba v %")
-print(graf3)
 
 #Panoge - število podjetij po panogi
 št_pod <- Panoge2008[1:3]
@@ -69,14 +66,12 @@ g1 <- ggplot(Prva_polovica,
   geom_line() + 
   labs(x="Leto", y="Število podjetij") +
   theme(legend.position = 'bottom')
-print(g1)
 
 g2 <- ggplot(Druga_polovica, 
              aes(Leto, Število_podjetij, group=interaction(Panoga), color=Panoga)) + 
   geom_line() + 
   labs(x="Leto", y="Število podjetij") +
   theme(legend.position = 'bottom')
-print(g2)
 
 #Panoge
 
@@ -127,46 +122,42 @@ graf4 <- ggplot(najboljsi,
   geom_line() +
   ggtitle("Prihodki od prodaje v tisoč EUR") + 
   labs(x="Leto", y="Prihodki od prodaje v tisoč EUR") 
-print(graf4)
 
 graf5 <- ggplot(najboljsi, 
                 aes(x=Leto,y=Bruto_poslovni_presežek_v_tisoč_EUR, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Presežek v tisoč EUR") + 
   labs(x="Leto", y="Bruto poslovni presežek v tisoč EUR") 
-print(graf5)
 
 graf6 <- ggplot(najboljsi, 
                 aes(x=Leto,y=Število_zaposlenih, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Število zaposlenih") + 
   labs(x="Leto", y="Število zaposlenih") 
-print(graf6)
 
 graf7 <- ggplot(najslabsi, 
                 aes(x=Leto,y=Prihodki_od_prodaje_v_tisoč_EUR, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Prihodki od prodaje v tisoč EUR") + 
   labs(x="Leto", y="Prihodki od prodaje v tisoč EUR") 
-print(graf7)
 
 graf8 <- ggplot(najslabsi, 
                 aes(x=Leto,y=Bruto_poslovni_presežek_v_tisoč_EUR, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Presežek v tisoč EUR") + 
   labs(x="Leto", y="Bruto poslovni presežek v tisoč EUR") 
-print(graf8)
 
 graf9 <- ggplot(najslabsi, 
                 aes(x=Leto,y=Število_zaposlenih, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Število zaposlenih") + 
   labs(x="Leto", y="Število zaposlenih") 
-print(graf9)
 
 figure <- ggarrange(graf7, graf8, graf9,
                     ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
-print(figure)
+
+figure2 <- ggarrange(graf4, graf5, graf6,
+                    ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
 
 # Uvozimo zemljevid.
 
@@ -188,8 +179,6 @@ st_podjetij_2016 <- Regije %>% select(Regija, Leto, Število_podjetij) %>% filte
 zemljevid1 <- ggplot(inner_join(zemljevid, st_podjetij_2016, by = c("NAME_1"='Regija'))) + 
   geom_polygon(aes(x = long, y = lat, group = group, fill = Število_podjetij)) +
   scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
-                
-print(zemljevid1)
 
 # Zemljevid Slovenije pobarvan glede na prihodek v regiji leta 2016
 
@@ -198,8 +187,7 @@ prihodek_2016 <- Regije %>% select(Regija, Leto, Skupni_prihodek) %>% filter(Let
 zemljevid2 <- ggplot(inner_join(zemljevid, prihodek_2016, by = c("NAME_1"='Regija'))) + 
   geom_polygon(aes(x = long, y = lat, group = group, fill = Skupni_prihodek)) +
   scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
-print(zemljevid2)
 
-runApp("shiny")
-shinyAppDir("shiny", options=list(width="100%", height=1350))
+#runApp("shiny")
+#shinyAppDir("shiny", options=list(width="100%", height=1350))
 

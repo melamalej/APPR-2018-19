@@ -82,15 +82,8 @@ kable(head(Panoge))
 kable(head(bdp))
 ```  
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(podatki_po_letih, aes(x=Leto, y=Skupno_število_podjetij/1e6))+ 
-  geom_line(aes(size=Skupno_število_oseb,color="red")) + xlab("Leto") + ylab("Število") 
-
-```
-
 ***
+
 
 # Analiza in vizualizacija podatkov
 
@@ -98,34 +91,66 @@ ggplot(podatki_po_letih, aes(x=Leto, y=Skupno_število_podjetij/1e6))+
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+Spodnja grafa prikazujeta število podjetij in število oseb, ki delajo v Sloveniji v letih 1999 do 2016.
+Razvidno je, da se je po letu 2008 število oseb, ki delajo zmanjšalo kar je posledica gospodarske krize, ki je takrat nastopila.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-ggplot() + geom_polygon(data=left_join(zemljevid, povprecja, by=c("OB_UIME"="obcina")),
-                        aes(x=long, y=lat, group=group, fill=povprecje)) +
-  ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-  guides(fill=guide_colorbar(title="Povprečje"))
+```{r graf1, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(graf1)
+```
+
+```{r graf2, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(graf2)
+```
+
+Na spodnjem zemljevidu lahko še pogledamo kako je bilo leta 2016 število podjetij porazdeljeno po regijah.
+
+```{r zemljevid1, echo=FALSE, fig.align='center', fig.cap=''}
+print(zemljevid1)
+```
+
+
+V naslednjem grafu primerjamo spremembo skupnega prihodka slovenskih podjetij in spremembo slovenskega BDP-ja. 
+
+```{r graf3, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(graf3)
+```
+
+Spodnji zemljevid prikazuje kako je bil leta 2016 prihodek slovenskih podjetij razdeljen po regijah.
+
+```{r zemljevid2, echo=FALSE, fig.align='center', fig.cap=''}
+print(zemljevid2)
+```
+
+Zanimalo me je tudi število podjetij glede na panogo. Zaradi boljše preglednosti sem panoge razdelila v dva grafa.
+
+```{r g1, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(g1)
+```
+
+```{r g2, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(g2)
+```
+
+Za primerjavo prihodkov, presežkov in števila zaposlenih sem izmed vseh panog izbrala dve panogi, ki imata največje prihodke in največje presežke (Trgovina,vzdrževanje in popravila motornih vozil in Predelovalne dejavnosti) in tri panoge glede na najmanjše prihodke in najmanjše presežke (Rudarstvo, Oskrba z vodo, ravnanje z odplakami in odpadki, saniranje okolja in Poslovanje z nepremičninami).
+
+```{r figure2, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(figure2)
+```
+
+```{r figure, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(figure)
 ```
 
 ***
 
 # Napredna analiza podatkov
 
-```{r analiza, echo=FALSE, message=FALSE}
-source("analiza/analiza.r", encoding="UTF-8")
-```
+#```{r analiza, echo=FALSE, message=FALSE}
+#source("analiza/analiza.r", encoding="UTF-8")
+#```
 
 Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-                                     skupina=factor(skupine)), by="obcina")
-, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color=guide_legend(title="Skupina"),
-         size=guide_legend(title="Prebivalci (* 1000)"))
-```
 
 ***
 
