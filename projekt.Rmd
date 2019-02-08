@@ -145,12 +145,15 @@ print(figure)
 
 # Napredna analiza podatkov
 
-#```{r analiza, echo=FALSE, message=FALSE}
-#source("analiza/analiza.r", encoding="UTF-8")
-#```
+```{r analiza, echo=FALSE, message=FALSE}
+source("analiza/analiza.r", encoding="UTF-8")
+```
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
+Za primer napredne analize sem vzela panogo z najvišjimi prihodki od prodaje: Trgovina,vzdrževanje in popravila motornih vozil. Poskusila sem napovedati prihodnje prihodke v letih od 2018 do 2023.
 
+```{r lin1, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(lin1)
+```
 
 ***
 
