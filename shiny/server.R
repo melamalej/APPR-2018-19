@@ -9,11 +9,11 @@ shinyServer(function(input, output){
     
     napoved <- Napoved(data)
     
-    lin1 <- ggplot(data, aes(x=Leto, y=Število)) +
+    lin1 <- ggplot(data, aes(x=Leto, y=Stevilo/1e2)) +
       geom_line() +
-      geom_point(data=napoved, aes(x=Leto, y=Število), color="blue", size=3) + 
+      geom_point(data=napoved, aes(x=Leto, y=Stevilo/1e2), color="blue", size=3) + 
       geom_smooth(method = 'lm', se = FALSE) +
-      xlab("Leto") + ylab("Spremenljivka") 
+      xlab("Leto") + ylab("Spremenljivka (deljena s 100 000)") 
     
     
     print(lin1)

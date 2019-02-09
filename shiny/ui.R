@@ -20,8 +20,8 @@ shinyUI(fluidPage(
   selectInput(inputId = "panoga", label = "Izberi panogo:", choices = panoge),
     
   selectInput(inputId = "spremenljivka", label = "Izberi spremenljivko:",
-              choices = c("Prihodki_od_prodaje_v_tisoč_EUR", "Bruto_poslovni_presežek_v_tisoč_EUR", 
-                        "Število_zaposlenih")),
+              choices = c("Prihodki_od_prodaje_v_tisoc_EUR", "Bruto_poslovni_presezek_v_tisoc_EUR", 
+                        "Stevilo_zaposlenih")),
     
   plotOutput("panoge")
     
