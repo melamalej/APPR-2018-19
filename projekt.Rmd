@@ -102,7 +102,7 @@ print(graf1)
 print(graf2)
 ```
 
-Na spodnjem zemljevidu lahko še pogledamo kako je bilo leta 2016 število podjetij porazdeljeno po regijah.
+Na spodnjem zemljevidu lahko še pogledamo kako je bilo leta 2016 porazdeljeno število podjetij po regijah.
 
 ```{r zemljevid1, echo=FALSE, fig.align='center', fig.cap=''}
 print(zemljevid1)
@@ -149,7 +149,7 @@ print(figure)
 source("analiza/analiza.r", encoding="UTF-8")
 ```
 
-Za primer napredne analize sem vzela panogo z najvišjimi prihodki od prodaje: Trgovina,vzdrževanje in popravila motornih vozil. Poskusila sem napovedati prihodnje prihodke v letih od 2018 do 2023.
+Kot primer napredne analize sem vzela panogo z najvišjimi prihodki od prodaje: Trgovina,vzdrževanje in popravila motornih vozil. Poskusila sem napovedati prihodnje prihodke v letih od 2018 do 2023.
 
 ```{r lin1, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
 print(lin1)
