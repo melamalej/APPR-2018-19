@@ -154,10 +154,24 @@ prihodki <- data.frame(Prihodek=unlist(prihodki, use.names = FALSE))
 presežek <- data.frame(Presežek=unlist(presežek, use.names = FALSE))
 zaposleni <- data.frame(Zaposleni=unlist(zaposleni, use.names = FALSE))
 
-Panoge <- cbind(Panoge2,Leta2, prihodki, presežek, zaposleni)
-Panoge <- as.data.frame(Panoge)
+Panoge <- data.frame(Panoge2,Leta2, prihodki, presežek, zaposleni)
 colnames(Panoge) <- c("Panoga", "Leto", "Prihodki_od_prodaje_v_tisoč_EUR",
                        "Bruto_poslovni_presežek_v_tisoč_EUR", "Število_zaposlenih")
+
+Panoge.tidy <- melt(Panoge, id.vars =c("Panoga", "Leto"), measure.vars = c("Prihodki_od_prodaje_v_tisoč_EUR", "Bruto_poslovni_presežek_v_tisoč_EUR", "Število_zaposlenih"),
+                    variable.name = "Spremenljivka", value.name = "Število")
+
+Panoge.prih.pres. <- data.frame(Panoge2,Leta2, prihodki, presežek)
+colnames(Panoge.prih.pres.) <- c("Panoga", "Leto", "Prihodki_od_prodaje_v_tisoč_EUR",
+                      "Bruto_poslovni_presežek_v_tisoč_EUR")
+
+Panoge.prih.pres.tidy <- melt(Panoge.prih.pres., id.vars =c("Panoga", "Leto"), measure.vars = c("Prihodki_od_prodaje_v_tisoč_EUR", "Bruto_poslovni_presežek_v_tisoč_EUR"),
+                              variable.name = "Spremenljivka", value.name = "Število")
+
+Panoge.zap. <- data.frame(Panoge2,Leta2,zaposleni)
+colnames(Panoge.zap.) <- c("Panoga", "Leto", "Število_zaposlenih")
+Panoge.zap.tidy <- melt(Panoge.zap., id.vars =c("Panoga", "Leto"), measure.vars = "Število_zaposlenih",
+                        variable.name = "Spremenljivka", value.name = "Število")
 
 #tabela5
 link <- "https://en.wikipedia.org/wiki/Economy_of_Slovenia"
