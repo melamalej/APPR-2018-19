@@ -67,13 +67,19 @@ g1 <- ggplot(Prva_polovica,
             aes(Leto, Stevilo_podjetij, group=interaction(Panoga), color=Panoga)) + 
   geom_line() + 
   labs(x="Leto", y="Število podjetij") +
-  theme(legend.position = 'right', legend.text = element_text(size=8)) 
+  theme(legend.position = 'bottom', legend.text = element_text(size=7),
+        legend.title = element_text(size=9),
+        legend.key.size = unit(0.8, "lines")) +
+  guides(colour = guide_legend(nrow = 5))
 
 g2 <- ggplot(Druga_polovica, 
              aes(Leto, Stevilo_podjetij, group=interaction(Panoga), color=Panoga)) + 
   geom_line() + 
   labs(x="Leto", y="Število podjetij") +
-  theme(legend.position = 'right', legend.text = element_text(size=8)) 
+  theme(legend.position = 'bottom', legend.text = element_text(size=7),
+        legend.title = element_text(size=9),
+        legend.key.size = unit(0.8, "lines")) +
+  guides(colour = guide_legend(nrow = 6))
                                                               
 
 #Panoge
@@ -124,40 +130,47 @@ graf4 <- ggplot(najboljsi,
                 aes(x=Leto,y=Prihodki_od_prodaje_v_tisoc_EUR/1e3, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Prihodki od prodaje") + 
-  labs(x="Leto", y="Prihodki od prodajev milijon EUR") 
+  labs(x="Leto", y="Prihodki od prodajev milijon EUR") +
+  scale_x_continuous(breaks = seq(1900,2100,2))
 
 graf5 <- ggplot(najboljsi, 
                 aes(x=Leto,y=Bruto_poslovni_presezek_v_tisoc_EUR/1e3, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Bruto poslovni presezek") + 
-  labs(x="Leto", y="Bruto poslovni presežek v milijon EUR") 
+  labs(x="Leto", y="Bruto poslovni presežek v milijon EUR") +
+  scale_x_continuous(breaks = seq(1900,2100,2))
 
 graf6 <- ggplot(najboljsi, 
                 aes(x=Leto,y=Stevilo_zaposlenih, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Število zaposlenih") + 
-  labs(x="Leto", y="Število zaposlenih") 
+  labs(x="Leto", y="Število zaposlenih") +
+  scale_x_continuous(breaks = seq(1900,2100,2))
 
 graf7 <- ggplot(najslabsi, 
-                aes(x=Leto,y=Prihodki_od_prodaje_v_tisoc_EUR, group=interaction(Panoga), color=Panoga)) + 
+                aes(x=Leto,y=Prihodki_od_prodaje_v_tisoc_EUR/1e3, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Prihodki od prodaje") + 
-  labs(x="Leto", y="Prihodki od prodaje v milijon EUR") 
+  labs(x="Leto", y="Prihodki od prodaje v milijon EUR") +
+  scale_x_continuous(breaks = seq(1900,2100,2))
 
 graf8 <- ggplot(najslabsi, 
-                aes(x=Leto,y=Bruto_poslovni_presezek_v_tisoc_EUR, group=interaction(Panoga), color=Panoga)) + 
+                aes(x=Leto,y=Bruto_poslovni_presezek_v_tisoc_EUR/1e3, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
-  ggtitle("Bruto poslovni presezek") + 
-  labs(x="Leto", y="Bruto poslovni presežek v milijon EUR") 
+  ggtitle("Bruto poslovni presežek") + 
+  labs(x="Leto", y="Bruto poslovni presežek v milijon EUR") +
+  scale_x_continuous(breaks = seq(1900,2100,2)) 
 
 graf9 <- ggplot(najslabsi, 
                 aes(x=Leto,y=Stevilo_zaposlenih, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
   ggtitle("Število zaposlenih") + 
-  labs(x="Leto", y="Število zaposlenih") 
+  labs(x="Leto", y="Število zaposlenih") +
+  scale_x_continuous(breaks = seq(1900,2100,2)) 
 
 figure <- ggarrange(graf7, graf8, graf9,
-                    ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
+                    ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom",
+                    widths = 0.8, heights = 0.8)
 
 figure2 <- ggarrange(graf4, graf5, graf6,
                     ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
@@ -190,5 +203,4 @@ prihodek_2016 <- Regije %>% select(Regija, Leto, Skupni_prihodek) %>% filter(Let
 zemljevid2 <- ggplot(left_join(zemljevid, prihodek_2016, by = c("NAME_1"='Regija'))) + 
   geom_polygon(aes(x = long, y = lat, group = group, fill = Skupni_prihodek)) +
   scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
-
 
