@@ -6,15 +6,16 @@ require(readr)
 require(tibble)
 
 library(reshape2)
+library(rvest)
 
 #Regije (tabela1)
-tabela1 <- read_csv2("st.podjetij_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija",2008:2016),
+tabela1 <- read_csv2("podatki/st.podjetij_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija",2008:2016),
                      locale = locale(encoding = "Windows-1250"))
 tabela1 <- tabela1 %>% melt(tabela1, id.vars = "Regija", measure.vars = names(tabela1)[-1],
                             value.name = "Stevilo_podjetij", variable.name = "Leto")
 tabela1$Leto <- parse_number(tabela1$Leto)
 
-tabela2 <- read_csv2("st.podjetij_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
+tabela2 <- read_csv2("podatki/st.podjetij_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
                      locale = locale(encoding = "Windows-1250"))
 tabela2 <- tabela2 %>% melt(tabela2, id.vars = "Regija", measure.vars = names(tabela2)[-1],
                             value.name = "Stevilo_podjetij", variable.name = "Leto")
@@ -22,13 +23,13 @@ tabela2$Regija[tabela2$Regija == "Spodnjeposavska"] <- "Posavska"
 tabela2$Regija[tabela2$Regija == "Notranjsko-kraška"] <- "Primorsko-notranjska"
 tabela2$Leto <- parse_number(tabela2$Leto)
 
-tabela3 <- read_csv2("st.oseb_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
+tabela3 <- read_csv2("podatki/st.oseb_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
                      locale = locale(encoding = "Windows-1250"))
 tabela3 <- tabela3 %>% melt(tabela3, id.vars = "Regija", measure.vars = names(tabela3)[-1],
                             value.name = "Stevilo_oseb", variable.name = "Leto")
 tabela3$Leto <- parse_number(tabela3$Leto)
 
-tabela4 <- read_csv2("st.oseb_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
+tabela4 <- read_csv2("podatki/st.oseb_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
                      locale = locale(encoding = "Windows-1250"))
 tabela4 <- tabela4 %>% melt(tabela4, id.vars = "Regija", measure.vars = names(tabela4)[-1],
                             value.name = "Stevilo_oseb", variable.name = "Leto")
@@ -36,13 +37,13 @@ tabela4$Regija[tabela4$Regija == "Spodnjeposavska"] <- "Posavska"
 tabela4$Regija[tabela4$Regija == "Notranjsko-kraška"] <- "Primorsko-notranjska"
 tabela4$Leto <- parse_number(tabela4$Leto)
 
-tabela5 <- read_csv2("prihodek_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
+tabela5 <- read_csv2("podatki/prihodek_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija", 2008:2016),
                      locale = locale(encoding = "Windows-1250"))
 tabela5 <- tabela5 %>% melt(tabela5, id.vars = "Regija", measure.vars = names(tabela5)[-1],
                             value.name = "Skupni_prihodek", variable.name = "Leto")
 tabela5$Leto <- parse_number(tabela5$Leto)
 
-tabela6 <- read_csv2("prihodek_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
+tabela6 <- read_csv2("podatki/prihodek_regije2007.csv", skip = 4, n_max = 12, col_names = c("Regija", 1999:2007),
                      locale = locale(encoding = "Windows-1250"))
 tabela6 <- tabela6 %>% melt(tabela6, id.vars = "Regija", measure.vars = names(tabela6)[-1],
                             value.name = "Skupni_prihodek", variable.name = "Leto")
@@ -76,13 +77,13 @@ Panoge <- c(rep("Kmetijstvo in lov, gozdarstvo in ribištvo",9),
 
 
 #tabela2
-p1 <- read_csv2("st.pod_panoge2008.csv", skip = 4, n_max = 2, col_names = Panoge)
+p1 <- read_csv2("podatki/st.pod_panoge2008.csv", skip = 4, n_max = 2, col_names = Panoge)
 panoge1 <- as.data.frame(t(p1), row.names = NULL)
 panoge1 <- remove_rownames(panoge1)
 panoge1 <- cbind(Panoge, panoge1)
 colnames(panoge1) <- c("Panoga", "Leto", "Stevilo_podjetij")
 
-p3 <- read_csv2("st.oseb_panoge2008.csv", skip = 4, n_max = 2, col_names = Panoge)
+p3 <- read_csv2("podatki/st.oseb_panoge2008.csv", skip = 4, n_max = 2, col_names = Panoge)
 panoge3 <- as.data.frame(t(p3), row.names = NULL)
 panoge3 <- remove_rownames(panoge3)
 panoge3 <- cbind(Panoge, panoge3)
@@ -93,7 +94,7 @@ Panoge2008 <- bind_cols(panoge1, panoge3[3])
 Panoge2008$Leto <- parse_number(Panoge2008$Leto)
 
 #tabela3
-p2 <- read_csv2("st.pod_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
+p2 <- read_csv2("podatki/st.pod_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
                 locale = locale(encoding = "Windows-1250"))
 panoge2 <- p2 %>% melt(p2, value.name = "Stevilo_podjetij", id.vars = "Panoga", measure.vars = names(p2)[-1],
                             variable.name = "Leto")
@@ -108,7 +109,7 @@ panoge2$Panoga[panoge2$Panoga == "I PROMET, SKLADIŠČENJE IN ZVEZE"] <- "Promet
 panoge2$Panoga[panoge2$Panoga == "J FINANČNO POSREDNIŠTVO"] <- "Finančno posredništvo"
 panoge2$Panoga[panoge2$Panoga == "K POSLOVANJE Z NEPREMIČNINAMI, NAJEM IN POSLOVNE STORITVE"] <- "Poslovanje z nepremičninami, najem in poslovne storitve"
 
-p4 <- read_csv2("st.oseb_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
+p4 <- read_csv2("podatki/st.oseb_panoge2007.csv", skip = 4, n_max = 9, col_names = c("Panoga", 1999:2007),
                 locale = locale(encoding = "Windows-1250"))
 panoge4 <- p4 %>% melt(p4, value.name = "Stevilo_oseb", id.vars = "Panoga", measure.vars = names(p4)[-1],
                        variable.name = "Leto")
@@ -147,7 +148,7 @@ Panoge2 <- c(rep(c("Rudarstvo","Predelovalne dejavnosti",
                  "Druge raznovrstne poslovne dejavnosti"), 13))
 Leta2 <- c(rep(2005:2017, each = 12))            
             
-p5 <- read_csv2("letno.csv", skip = 2, n_max = 13, locale = locale(encoding = "Windows-1250"))
+p5 <- read_csv2("podatki/letno.csv", skip = 2, n_max = 13, locale = locale(encoding = "Windows-1250"))
 prihodki = p5[2:13,2:14]
 presezek = p5[2:13,15:27]
 zaposleni = p5[2:13,28:40]
@@ -163,7 +164,7 @@ colnames(Panoge) <- c("Panoga", "Leto", "Prihodki_od_prodaje_v_tisoc_EUR",
 Panoge.tidy <- melt(Panoge, id.vars =c("Panoga", "Leto"), measure.vars = c("Prihodki_od_prodaje_v_tisoc_EUR", "Bruto_poslovni_presezek_v_tisoc_EUR", "Stevilo_zaposlenih"),
                     variable.name = "Spremenljivka", value.name = "Stevilo")
 
-Panoge.prih.pres. <- data.frame(Panoge2,Leta2, prihodki, presežek)
+Panoge.prih.pres. <- data.frame(Panoge2,Leta2, prihodki, presezek)
 colnames(Panoge.prih.pres.) <- c("Panoga", "Leto", "Prihodki_od_prodaje_v_tisoc_EUR",
                       "Bruto_poslovni_presezek_v_tisoc_EUR")
 
