@@ -169,8 +169,7 @@ graf9 <- ggplot(najslabsi,
   scale_x_continuous(breaks = seq(1900,2100,2)) 
 
 figure <- ggarrange(graf7, graf8, graf9,
-                    ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom",
-                    widths = 0.8, heights = 0.8)
+                    ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
 
 figure2 <- ggarrange(graf4, graf5, graf6,
                     ncol = 2, nrow = 2, common.legend = TRUE, legend = "bottom")
@@ -184,23 +183,39 @@ zemljevid <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36
 #zr <- zemljevid$NAME_1 %>% unique()
 #rr <- Regije$Regija %>% unique()
 
-Regije$Regija[Regije$Regija=="Posavska"] <- "Spodnjeposavska"
-Regije$Regija[Regije$Regija=="Primorsko-notranjska"] <- "Notranjsko-kraška"
-Regije$Regija <- factor(Regije$Regija)
+Regije1 <- Regije
+
+Regije1$Regija[Regije$Regija=="Posavska"] <- "Spodnjeposavska"
+Regije1$Regija[Regije$Regija=="Primorsko-notranjska"] <- "Notranjsko-kraška"
+Regije1$Regija <- factor(Regije1$Regija)
 
 # Zemljevid Slovenije pobarvan glede na število podjetij v regiji leta 2016
 
-st_podjetij_2016 <- Regije %>% select(Regija, Leto, Stevilo_podjetij) %>% filter(Leto==2016)
+st_podjetij_2016 <- Regije1 %>% select(Regija, Leto, Stevilo_podjetij) %>% filter(Leto==2016)
 
-zemljevid1 <- ggplot(left_join(zemljevid, st_podjetij_2016, by = c("NAME_1"='Regija'))) + 
+#logaritemska skala
+logmin1=log(min(st_podjetij_2016$Stevilo_podjetij),10)
+logmax1=log(max(st_podjetij_2016$Stevilo_podjetij),10)
+mybreaks1=round(10^seq(logmin1,logmax1,(logmax1-logmin1)/4),1)
+
+zemljevid1  <- ggplot(left_join(zemljevid, st_podjetij_2016, by = c("NAME_1"='Regija'))) +
   geom_polygon(aes(x = long, y = lat, group = group, fill = Stevilo_podjetij)) +
-  scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
+  scale_fill_gradient(low="red",high="yellow", trans = "log10",breaks=mybreaks1,limits=c(mybreaks1[1]-0.2,mybreaks1[5]+0.2))+
+  labs(fill="Stevilo podjetij")
 
 # Zemljevid Slovenije pobarvan glede na prihodek v regiji leta 2016
 
-prihodek_2016 <- Regije %>% select(Regija, Leto, Skupni_prihodek) %>% filter(Leto==2016)
+prihodek_2016 <- Regije1 %>% select(Regija, Leto, Skupni_prihodek) %>% filter(Leto==2016)
 
-zemljevid2 <- ggplot(left_join(zemljevid, prihodek_2016, by = c("NAME_1"='Regija'))) + 
-  geom_polygon(aes(x = long, y = lat, group = group, fill = Skupni_prihodek)) +
-  scale_fill_gradientn(colours = terrain.colors(10), trans = "log10")
+#logaritemska skala
+logmin=log(min(prihodek_2016$Skupni_prihodek),10)
+logmax=log(max(prihodek_2016$Skupni_prihodek),10)
+mybreaks=round(10^seq(logmin,logmax,(logmax-logmin)/4)/1000000,1)
+
+zemljevid2 <- ggplot(left_join(zemljevid, prihodek_2016, by = c("NAME_1"='Regija'))) +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = Skupni_prihodek/1000000)) +
+  scale_fill_gradient(low="red",high="yellow", trans = "log10",breaks=mybreaks,limits=c(mybreaks[1]-0.2,mybreaks[5]+0.2))+
+  labs(fill="Skupni prihodek v mil. Eur") 
+
+
 
