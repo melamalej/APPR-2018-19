@@ -7,6 +7,10 @@ require(tibble)
 
 library(reshape2)
 library(rvest)
+library(gsubfn)
+
+#Opombe:
+#Locale objekt poskuša zajeti vse privzete nastavitve, ki se lahko razlikujejo med državami.
 
 #Regije (tabela1)
 tabela1 <- read_csv2("podatki/st.podjetij_regije2008.csv", skip = 4, n_max = 12, col_names = c("Regija",2008:2016),
@@ -83,11 +87,10 @@ panoge1 <- remove_rownames(panoge1)
 panoge1 <- cbind(Panoge, panoge1)
 colnames(panoge1) <- c("Panoga", "Leto", "Stevilo_podjetij")
 
-p3 <- read_csv2("podatki/st.oseb_panoge2008.csv", skip = 4, n_max = 2, col_names = Panoge)
+p3 <- read_csv2("podatki/st.oseb_panoge2008.csv", skip = 4, n_max = 2, col_names = Panoge, na = c("z"))
 panoge3 <- as.data.frame(t(p3), row.names = NULL)
 panoge3 <- remove_rownames(panoge3)
 panoge3 <- cbind(Panoge, panoge3)
-panoge3[panoge3=="z"]<-NA
 colnames(panoge3) <- c("Panoga", "Leto", "Stevilo_oseb")
 
 Panoge2008 <- bind_cols(panoge1, panoge3[3])
@@ -98,7 +101,6 @@ p2 <- read_csv2("podatki/st.pod_panoge2007.csv", skip = 4, n_max = 9, col_names 
                 locale = locale(encoding = "Windows-1250"))
 panoge2 <- p2 %>% melt(p2, value.name = "Stevilo_podjetij", id.vars = "Panoga", measure.vars = names(p2)[-1],
                             variable.name = "Leto")
-panoge2$Leto <- parse_number(panoge2$Leto)
 panoge2$Panoga[panoge2$Panoga == "C RUDARSTVO"] <- "Rudarstvo"
 panoge2$Panoga[panoge2$Panoga == "D PREDELOVALNE DEJAVNOSTI"] <- "Predelovalne dejavnosti"
 panoge2$Panoga[panoge2$Panoga == "E OSKRBA Z ELEKTRIČNO ENERGIJO, PLINOM IN VODO"] <- "Oskrba z električno energijo, plinom in vodo"
@@ -113,7 +115,6 @@ p4 <- read_csv2("podatki/st.oseb_panoge2007.csv", skip = 4, n_max = 9, col_names
                 locale = locale(encoding = "Windows-1250"))
 panoge4 <- p4 %>% melt(p4, value.name = "Stevilo_oseb", id.vars = "Panoga", measure.vars = names(p4)[-1],
                        variable.name = "Leto")
-panoge4$Leto <- parse_number(panoge4$Leto)
 panoge4$Panoga[panoge4$Panoga == "C RUDARSTVO"] <- "Rudarstvo"
 panoge4$Panoga[panoge4$Panoga == "D PREDELOVALNE DEJAVNOSTI"] <- "Predelovalne dejavnosti"
 panoge4$Panoga[panoge4$Panoga == "E OSKRBA Z ELEKTRIČNO ENERGIJO, PLINOM IN VODO"] <- "Oskrba z električno energijo, plinom in vodo"
@@ -178,13 +179,14 @@ Panoge.zap.tidy <- melt(Panoge.zap., id.vars =c("Panoga", "Leto"), measure.vars 
 
 #tabela5
 link <- "https://en.wikipedia.org/wiki/Economy_of_Slovenia"
-stran <- html_session(link) %>% read_html()
+stran <- html_session(link) %>% read_html() 
 bdp <- stran %>% html_nodes(xpath="//table[@class='wikitable']") %>%.[[1]]%>% html_table()
+summary(bdp) #character
+
 bdp <- data.frame(Leto = 2005:2017, BDP = t(bdp[3, 5:17]), row.names = NULL)
-bdp$X3 <- gsub("\\%", "", bdp$X3)
+bdp$X3 <- gsub("\\%", "", bdp$X3) #nadomesti vsa ujemanja niza z drugim nizom
 bdp$X3 <- parse_number(bdp$X3)
 names(bdp) <- c("Leto", "Sprememba_BDP")
 bdp$`Sprememba_BDP`[5] <- -7.8
 bdp$`Sprememba_BDP`[8] <- -2.7
 bdp$`Sprememba_BDP`[9] <- -1.1
-bdp$Leto <- parse_number(bdp$Leto)

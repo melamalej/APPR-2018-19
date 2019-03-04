@@ -1,16 +1,5 @@
 library(shiny)
 
-#shinyUI(
-  #ui <- fluidPage(
-    #titlePanel("A"),
-    #tabsetPanel(
-      #tabPanel("Leto",
-               #sliderInput(inputId="leto",label="Leto",min=2005,max=2017,value=2005,sep=""),
-               #plotOutput("panoge"))
-    #)
-  #)
-#)
-
 shinyUI(fluidPage(
   
   titlePanel("Analiza posamezne panoge"),
@@ -26,4 +15,3 @@ shinyUI(fluidPage(
   plotOutput("panoge")
     
 ))
-  

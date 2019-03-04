@@ -1,4 +1,5 @@
 # 4. faza: Analiza podatkov
+require(ggdendro)
 
 #Napoved prihodkov od prodaje za panogo z največjimi prihodki za naslenjih 6 let
 najboljsa <- melt(prva, Panoge.zap., id.vars =c("Panoga", "Leto"), 
@@ -28,6 +29,32 @@ Napoved <- function(data){
   return(napoved)
 }
 
+#razvrscanje
+podatki <- Regije1 %>% filter(Leto==2016) %>% select(Regija, Stevilo_oseb)
+regija <- podatki$Regija
+row.names(podatki) <- podatki$Regija
+podatki$Regija <- NULL 
 
+#prilagoditev
+lestvica <- scale(podatki)
+#matrika različnosti (class: dist)
+matrika <- dist(lestvica)
+#hierarhično razvrščanje v 3 skupine
+n <- 3
+skupina <- hclust(matrika) 
+#izris
+ggdendrogram(skupina, rotate = FALSE, size = 2)
+#dolocimo razvrstitev skupina
+skupina <- hclust(matrika) %>% cutree(n)
 
+skupine <- data.frame(regija, skupina)
+skupine <- remove_rownames(skupine)
 
+#katere regije so v skupini 2
+skupine %>% filter(skupina==2) %>% select(regija)
+
+zemljevid3 <- ggplot(left_join(zemljevid, skupine, by = c("NAME_1"='regija'))) +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = skupina)) +
+  labs(fill="Lestvica")  +
+  ggtitle("Razvrščanje glede na število oseb, ki delajo") 
+ 

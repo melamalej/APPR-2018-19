@@ -14,7 +14,33 @@ if (!require(gpclib)) install.packages("gpclib", type="source")
 gpclibPermit()
 #to sem dodala rešila napako TRUE is not TRUE
 
+#Razmerje met številom podjetij in številom oseb ki delajo
+Regije$razmerje <- round(Regije$Stevilo_podjetij/Regije$Stevilo_oseb, 2)
+raz <- Regije %>% select(Regija, Leto, razmerje)
+
+razm <- ggplot() + 
+  geom_point(data=raz, aes(x=Leto, y=razmerje, group=interaction(Regija), color=Regija)) +
+  ggtitle("Razmerje med številom podjetij in številom oseb, ki delajo") + 
+  labs(x="Leto", y="Stopnja razmerja")
+
 #Regije
+reg <- select(Regije, Regija, Leto, Stevilo_podjetij)
+reg1 <- reg %>% filter(Regija=="Osrednjeslovenska")
+reg2 <- subset(reg, Regija!="Osrednjeslovenska")
+reg1 <- melt(reg1, id.vars = c("Regija", "Leto"), measure.vars = "Stevilo_podjetij",
+            value.name = "stevilo")
+reg2 <- melt(reg2, id.vars = c("Regija", "Leto"), measure.vars = "Stevilo_podjetij",
+             value.name = "stevilo")
+gg1 <- ggplot() + 
+  geom_line(data=reg1, aes(x=Leto, y=stevilo)) +
+  ggtitle("Število podjetij v osrednjeslovenski regiji") + labs(x="Leto", y="Število podjetij")
+
+gg2 <- ggplot() + 
+  geom_line(data=reg2, aes(x=Leto, y=stevilo, group=interaction(Regija), color=Regija)) +
+  ggtitle("Število podjetij po ostalih regijah") + labs(x="Leto", y="Število podjetij")
+
+fig <- ggarrange(gg1, gg2, ncol = 2, nrow = 1, common.legend = TRUE, legend = "bottom")
+
 podatki_po_letih1 <- Regije %>% group_by(Leto) %>% 
   summarise(Skupno_stevilo_podjetij = sum(Stevilo_podjetij)) 
 podatki_po_letih2 <- Regije %>% group_by(Leto) %>% 
@@ -131,12 +157,12 @@ graf4 <- ggplot(najboljsi,
   geom_line() +
   ggtitle("Prihodki od prodaje") + 
   labs(x="Leto", y="Prihodki od prodajev milijon EUR") +
-  scale_x_continuous(breaks = seq(1900,2100,2))
+  scale_x_continuous(breaks = seq(1900,2100,2)) #izogib decimalnemu zapisu datuma
 
 graf5 <- ggplot(najboljsi, 
                 aes(x=Leto,y=Bruto_poslovni_presezek_v_tisoc_EUR/1e3, group=interaction(Panoga), color=Panoga)) + 
   geom_line() +
-  ggtitle("Bruto poslovni presezek") + 
+  ggtitle("Bruto poslovni presežek") + 
   labs(x="Leto", y="Bruto poslovni presežek v milijon EUR") +
   scale_x_continuous(breaks = seq(1900,2100,2))
 
@@ -145,7 +171,7 @@ graf6 <- ggplot(najboljsi,
   geom_line() +
   ggtitle("Število zaposlenih") + 
   labs(x="Leto", y="Število zaposlenih") +
-  scale_x_continuous(breaks = seq(1900,2100,2))
+  scale_x_continuous(breaks = seq(1900,2100,2)) 
 
 graf7 <- ggplot(najslabsi, 
                 aes(x=Leto,y=Prihodki_od_prodaje_v_tisoc_EUR/1e3, group=interaction(Panoga), color=Panoga)) + 
@@ -198,9 +224,12 @@ logmin1=log(min(st_podjetij_2016$Stevilo_podjetij),10)
 logmax1=log(max(st_podjetij_2016$Stevilo_podjetij),10)
 mybreaks1=round(10^seq(logmin1,logmax1,(logmax1-logmin1)/4),1)
 
+#left_join vrne vse vrstice iz leve tabele in vse vrstice z ustreznimi ključi iz desne tabele.
+
 zemljevid1  <- ggplot(left_join(zemljevid, st_podjetij_2016, by = c("NAME_1"='Regija'))) +
   geom_polygon(aes(x = long, y = lat, group = group, fill = Stevilo_podjetij)) +
-  scale_fill_gradient(low="red",high="yellow", trans = "log10",breaks=mybreaks1,limits=c(mybreaks1[1]-0.2,mybreaks1[5]+0.2))+
+  scale_fill_gradient(low="red",high="yellow", trans = "log10",breaks=mybreaks1, #trans="log10" je build-in transformacija
+                      limits=c(mybreaks1[1]-0.2,mybreaks1[5]+0.2))+
   labs(fill="Stevilo podjetij")
 
 # Zemljevid Slovenije pobarvan glede na prihodek v regiji leta 2016
@@ -214,8 +243,9 @@ mybreaks=round(10^seq(logmin,logmax,(logmax-logmin)/4)/1000000,1)
 
 zemljevid2 <- ggplot(left_join(zemljevid, prihodek_2016, by = c("NAME_1"='Regija'))) +
   geom_polygon(aes(x = long, y = lat, group = group, fill = Skupni_prihodek/1000000)) +
-  scale_fill_gradient(low="red",high="yellow", trans = "log10",breaks=mybreaks,limits=c(mybreaks[1]-0.2,mybreaks[5]+0.2))+
-  labs(fill="Skupni prihodek v mil. Eur") 
+  scale_fill_gradient(low="red",high="yellow", trans = "log10", breaks=mybreaks,  
+                      limits=c(mybreaks[1]-0.2,mybreaks[5]+0.2)) + 
+  labs(fill="Skupni prihodek v mil. EUR") 
 
 
 

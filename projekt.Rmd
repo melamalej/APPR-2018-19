@@ -1,5 +1,5 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
+title: "Osnovna analiza podjetij v Sloveniji"
 author: "Mela Malej"
 output:
   html_document: default
@@ -102,12 +102,23 @@ print(graf1)
 print(graf2)
 ```
 
+Sledi analiza števila podjetij po regijah v letih 1999 do 2016. Zaradi izstopanja osrednjeslovenske regije sem narisala dva grafa.
+
+```{r fig, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(fig)
+```
+
 Na spodnjem zemljevidu lahko še pogledamo kako je bilo leta 2016 porazdeljeno število podjetij po regijah.
 
 ```{r zemljevid1, echo=FALSE, fig.align='center', fig.cap=''}
 print(zemljevid1)
 ```
 
+Bolj zanimiva je analiza stopnje razmerja med številom podjetij in številom oseb, ki delajo. To prikazuje naslednji graf.
+
+```{r razm, echo=FALSE, message=FALSE, fig.align='center', fig.cap=''}
+print(razm)
+```
 
 V naslednjem grafu primerjamo spremembo skupnega prihodka slovenskih podjetij in spremembo slovenskega BDP-ja. 
 
@@ -155,8 +166,22 @@ Kot primer napredne analize sem vzela panogo z najvišjimi prihodki od prodaje: 
 print(lin1)
 ```
 
+Podatke o številu oseb, ki delajo sem tudi analizirala s tehniko razvrščanja. Narisala sem  zemljevid Slovenije po regijah, kjer sem regije razvrstila v tri skupine, glede na število oseb, ki delajo v posamezni regiji.
+
+```{r zemljevid3, echo=FALSE, fig.align='center', fig.cap=''}
+print(zemljevid3)
+```
+
 ***
 
 ```{r shiny, echo=FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=800))
 ```
+
+***
+
+# Zaključek
+
+Pri analizi mojih podatkov nisem prišla do posebno presenetljivih zaključkov. Pri analizi podjetij po regijah število podjetij, število oseb, ki delajo in skupni prihodek po pričakovanjih skozi leta naraščajo. V letu 2008 so vsa števila zelo narastla, kar je verjetno posledica spremembe metodologije zbiranja podatkov. Vse vrednosti so najvišje v osrednjeslovenski regiji, najnižje pa v primorsko-notrnjski in zasavski regiji. Kot povsod po svetu so vrednosti na splošno višje tam, kjer so večja mesta (Ljubljana, Maribor in Celje). Bolj zanimivi so podatki po panogah, kjer lahko vidimo kako nekatere panoge rastejo in druge upadajo. Najbolj uspešna panoga so predelovalne dejavnosti, ki ima najvišje presežke in število zaposlenih, panoga z najnižjimi prihodki, presežki in številom zaposlenih v Sloveniji pa je rudarstvo.
+
+***
